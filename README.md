@@ -33,7 +33,7 @@ Things you may want to cover:
 |password_confirmation|integer|null:false|
 
 ### Association
-- has_many :groups, through: :members
+- has_many :members
 - has_many :messages
 
 ## groupsテーブル
@@ -42,7 +42,7 @@ Things you may want to cover:
 |name|string|null:false|
 
 ### Association
-- has_many :users, through: :members
+- has_many :members
 - has_many :messages
 
 ## messagesテーブル
@@ -50,8 +50,9 @@ Things you may want to cover:
 |:-----------|------------:|:------------:|
 |message|text| |
 |image|string| |
-|user_id|references|null: false, foreign_key: true|
-|groups_id|references|null: false, foreign_key: true|
+|date|datetime|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|groups_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -61,9 +62,13 @@ Things you may want to cover:
 ## membersテーブル
 | Column | Type | Options |
 |:-----------|------------:|:------------:|
-|user_id|references|null: false, foreign_key: true, index: true|
-|groups_id|references|null: false, foreign_key: true, index: true|
+|user_id|integer|null: false, foreign_key: true|
+|groups_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
 - belongs_to :user
+
+### index
+- add_index :members, :group_id
+- add_index :members, [:user_id, :group_id]
