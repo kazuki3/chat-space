@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 
-
 html, body {
   height: 100%;
   background-color: #FAFAFA;
@@ -18,83 +17,105 @@ html, body {
   }
 }
 
-#chat-side {
+.chat-side {
   float: left;
   width: 300px;
-  height: 100%;
-  background-color: #2f3e51;
-  #chat-side__user{
-    height: 118.5px;
+  height: 100vh;
+  .chat-side__user{
+    height: 15%;
     width: 100%;
     background-color: #253141;
-    line-height: 118.5px;
-    #chat-side__user-name {
-      font-size: 16px;
-      font-weight: bold;
-      color: $color-side;
-      display: inline-block;
-      margin-left: 20px;
-      text-align: left;
-    }
-    #chat-side__user-icon {
-      display: inline-block;
-      margin-right: 20px;
-      float: right;
-      #chat-side__icon {
-        text-decoration: none;
+    position: relative;
+    .chat-side__user-content {
+      height: 50px;
+      width: 100%;
+      line-height: 50px;
+      margin: auto 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      .chat-side__user-name {
+        font-size: 16px;
+        font-weight: bold;
+        color: $color-side;
+        position: relative;
+        display: inline-block;
+        margin: 0 20px;
+      }
+      .chat-side__user--new-gruop {
+        position: relative;
+        display: inline-block;
+        margin-left: 65px;
+        i {
+          color: #ffffff;
+        }
+      }
+      .chat-side__user--option {
+        position: relative;
+        display: inline-block;
         i {
           color: #ffffff;
         }
       }
     }
   }
-  #chat-side__groups {
+
+  .chat-side__groups {
+    height: 85%;
     width: 100%;
-    a {
-      text-decoration: none;
-      #chat-side__group {
-        width: 100%;
-        height: 114px;
-        background-color: #2f3e51;
-        #chat-side__group-name {
-          font-size: 15px;
-          color: $color-side;
-          padding: 15px 20px 5px 20px;
+    background-color: #253141;
+    .chat-side__groups-list {
+      height: 100%;
+      color: #ffffff;
+      a {
+        text-decoration: none;
+        .chat-side__group {
+          padding: 20px;
+          color: #ffffff;
+          &-name {
+            font-size: 15px;
+          }
+          &-message {
+            font-size: 11px;
+          }
         }
-        #chat-side__group-message {
-          font-size: 11px;
-          color: $color-side;
-          padding: 0 20px;
+        .chat-side__group:hover {
+          background: rgba(47, 62, 81, 0.5);
         }
-      }
-      #chat-side__group:hover {
-        background: rgba(47, 62, 81, 0.5);
       }
     }
   }
 }
 
-#chat-main {
+.clearfix {
+  clear:both;
+  content: '';
+  display: block;
+}
+
+.chat-main {
   float: right;
   width: calc(100vw - 300px);
+  height: 100vh;
 
-  #chat-main__header {
-    height: 118.5px;
+  .chat-main__header {
+    height: 15%;
     border-bottom: 1px solid #eeeeee;
     background-color: #ffffff;
     padding: 0 40px;
-    #chat-main__header-group {
+    &-group {
       font-size: 20px;
       color: #333333;
       padding-top: 35px;
       padding-bottom: 15px;
     }
-    #chat-main__header-name {
+    &-name {
       font-size: 12px;
       color: $color-sub;
     }
+
     a {
-      #chat-main__header-edit {
+      .chat-main__header-edit {
         font-size: 14px;
         text-decoration: none;
         line-height: 40px;
@@ -110,56 +131,83 @@ html, body {
     }
   }
 
-  #chat-main__body {
+  .chat-main__body {
+    overflow-y: scroll;
     width:100%;
-    height: 141px;
+    height: calc(100vh - 15% - 90px);
     background-color: #FAFAFA;
-    padding: 0 40px;
-    #chat-main__message-name {
-      font-size: 16px;
-      font-weight: bold;
-      color: $color-main;
-      padding-top: 46px;
-      padding-bottom: 10px;
-      display: inline-block;
-    }
-    #chat-main__message-date {
-      font-size: 12px;
-      color: $color-sub;
-      padding-left: 10px;
-      vertical-align: center;
-      display: inline-block;
-    }
-    #chat-main__message-body {
-      font-size: 14px;
-      color: $color-main;
-      padding-bottom: 40px;
+    .chat-main__message-list {
+      padding-top: 26px;
+      padding-left: 40px;
+      .chat-main__message {
+        padding: 20px 0;
+        &-name {
+          font-size: 16px;
+          font-weight: bold;
+          color: $color-main;
+          float: left;
+        }
+        &-date {
+          font-size: 12px;
+          color: $color-sub;
+          padding: 0 10px 10px;
+          float: left;
+        }
+        &-body {
+          font-size: 14px;
+          color: $color-main;
+          clear: both;
+        }
+      }
     }
   }
-}
 
-#chat-footer {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: calc(100vw - 300px);
-  height: 90px;
-  background-color: #434a54;
-  line-height: 90px;
-  #chat-footer__text-form {
-    height: 50px;
-    width: 945px;
-    margin-left: 45px;
-  }
-  #chat-footer__submit-btn {
-    font-weight: 400px;
-    background-color: #38AEF0;
-    color: #ffffff;
-    font-size: 16px;
-    line-height: 50px;
-    padding: 0 30px;
-    display: inline-block;
-    margin-right:40px;
-    border: 1px solid #38AEF0;
+  .chat-main__footer {
+    height: 90px;
+    width: 100%;
+    background-color: #B8C3C7;
+    .chat-main__footer-form {
+      margin: 0 40px;
+      position: relative;
+      .chat-main__footer-body {
+        position: relative;
+        .chat-footer__body--message {
+          height: 50px;
+          width: calc(100% - 130px);
+          padding: 15px 10px;
+          margin: 20px 0;
+          border: none;
+        }
+        .chat-footer__body--chat-file {
+          height: 50px;
+          width: 40px;
+          margin: 32px 130px 20px 0;
+          position: absolute;
+          top: 0;
+          right: 0;
+          .chat-footer__body--image {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: none;
+          }
+          i {
+            color: #000000;
+          }
+        }
+      }
+      .chat-footer__body--submit {
+        color: #ffffff;
+        text-align: center;
+        width: 100px;
+        height: 50px;
+        background-color: #38AEF0;
+        margin: 20px 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: none;
+      }
+    }
   }
 }
