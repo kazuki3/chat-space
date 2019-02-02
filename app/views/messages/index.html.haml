@@ -2,10 +2,10 @@
   .chat-side__user
     .chat-side__user-content
       .chat-side__user-name
-        %p ryosukemaehira
-      = link_to "#", class: "chat-side__user--new-gruop" do
+        %p= current_user.name
+      = link_to new_group_path, class: "chat-side__user--new-gruop" do
         %i.fa.fa-edit
-      = link_to "#", class:"chat-side__user--option" do
+      = link_to edit_user_path(current_user), class:"chat-side__user--option" do
         %i.fa.fa-cog
 
   .chat-side__groups
@@ -14,20 +14,20 @@
 
 .chat-main
   .chat-main__header
-    .chat-main__header-group あかさたな
-    %a{:href => "#"}
-      .chat-main__header-edit Edit
-    .chat-main__header-name Members: 岡山和樹
+    .chat-main__header--group.clearfix
+      .chat-main__header--group-name あかさたな
+      %a{href: "#", class: "chat-main__header--group-edit-btn"} Edit
+    .chat-main__header-members Members: 岡山和樹
 
   .chat-main__body
     .chat-main__message-list
       = render partial: "chat"
 
   .chat-main__footer
-    %form{:class => "chat-main__footer-form"}
+    %form{class: "chat-main__footer-form"}
       .chat-main__footer-body
-        %input{:name => "message[body]", :placeholder => "type a message", :class => "chat-footer__body--message"}
-        %label{:class => "chat-footer__body--chat-file", :for => "message-image"}
+        %input{name: "message[body]", placeholder: "type a message", class: "chat-footer__body--message"}
+        %label{class: "chat-footer__body--chat-file", for: "message-image"}
           %i.fa.fa-image
-          %input{:type => "file", :class => "chat-footer__body--image", :id => "message-image"}
-      %input{:type => "submit", :value => "send", :class => "chat-footer__body--submit"}
+          %input{type: "file", class: "chat-footer__body--image", id: "message-image"}
+      %input{type: "submit", value: "send", class: "chat-footer__body--submit"}

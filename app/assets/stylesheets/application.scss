@@ -1,6 +1,17 @@
-
-
+@import "./config/reset";
+@import "./config/colors";
 @import "font-awesome";
-@import "./reset";
 @import "./variable";
 @import "style";
+@import "modules/notifications";
+@import "modules/user";
+@import "modules/group";
+@import "modules/side_bar";
+
+
+// @import "config/size";
+// @import "mixins/mixin";
+// @import "mixins/vendor_prefix";
+
+// @import "modules/chat";
+// @import "messages/messages.scss"

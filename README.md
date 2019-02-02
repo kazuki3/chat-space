@@ -58,11 +58,11 @@ Things you may want to cover:
 - belongs_to :user
 
 
-## membersテーブル
+## group_userテーブル
 | Column | Type | Options |
 |:-----------|------------:|:------------:|
-|user_id|references|null: false, foreign_key: true, index: true|
-|group_id|references|null: false, foreign_key: true, index: true|
+|user|references|null: false, foreign_key: true, index: true|
+|group|references|null: false, foreign_key: true, index: true|
 
 ### Association
 - belongs_to :group
