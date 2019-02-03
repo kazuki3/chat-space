@@ -1,9 +1,7 @@
-%a{href: "#"}
-  .chat-side__group
-    .chat-side__group-name 神
-    .chat-side__group-message 一つ目のトークあああああああああああああああああああああああああああああああああ
-
-%a{href: "#"}
-  .chat-side__group
-    .chat-side__group-name 二人目の神々
-    .chat-side__group-message 2つ目のトークいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい
+- current_user.groups.each do |group|
+  = link_to group_messages_path(group) do
+    .chat-side__group
+      .chat-side__group-name
+        = group.name
+      .chat-side__group-message
+        メッセージはまだありません
