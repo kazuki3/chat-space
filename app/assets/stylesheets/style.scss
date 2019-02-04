@@ -110,10 +110,10 @@ html, body {
           left: 15px;
           display: none;
         }
-        i {
+        .icon {
           color: $Black;
         }
-        i:hover {
+        .icon:hover {
           cursor: pointer;
         }
       }
@@ -130,7 +130,7 @@ html, body {
       right: 0;
       border: none;
     }
-    .chat-footer__body--submit {
+    .chat-footer__body--submit:hover {
       cursor: pointer;
     }
   }
