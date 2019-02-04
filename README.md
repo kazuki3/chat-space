@@ -67,3 +67,14 @@ Things you may want to cover:
 ### Association
 - belongs_to :group
 - belongs_to :user
+
+
+
+  .chat-main__footer
+    = form_for [@group, @message], html: {class: 'chat-main__footer-form'} do |f|
+      .chat-main___footer-body
+        = f.text_field :message, class: 'chat-footer__body--message', placeholder: 'type a message'
+        = f.label :image, class: 'chat-footer__body--chat-file' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'chat-footer__body--image'
+        = f.submit 'Send', class: 'chat-footer__body--submit'
