@@ -14,7 +14,7 @@
 
   .chat-main__body
     .chat-main__message-list
-      = render partial: "chat"
+      = render partial: 'message', collection: @messages
 
   .chat-main__footer
     = form_for [@group, @message], html: {class: 'chat-main__footer-form'} do |f|
