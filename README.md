@@ -70,11 +70,11 @@ Things you may want to cover:
 
 
 
-  .chat-main__footer
-    = form_for [@group, @message], html: {class: 'chat-main__footer-form'} do |f|
-      .chat-main___footer-body
-        = f.text_field :message, class: 'chat-footer__body--message', placeholder: 'type a message'
-        = f.label :image, class: 'chat-footer__body--chat-file' do
-          = fa_icon 'picture-o', class: 'icon'
-          = f.file_field :image, class: 'chat-footer__body--image'
-        = f.submit 'Send', class: 'chat-footer__body--submit'
+ログインしているかつ、保存に成功した場合
+メッセージの保存はできたのか → クリア
+意図した画面に遷移しているか
+ログインしているが、保存に失敗した場合
+メッセージの保存は行われなかったか
+意図したビューが描画されているか
+ログインしていない場合
+意図した画面にリダイレクトできているか → クリア
