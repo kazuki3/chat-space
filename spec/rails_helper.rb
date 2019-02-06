@@ -60,4 +60,13 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryGirl::Syntax::Methods
+
+# # diviseをRspecで使用可に
+#   config.include Devise::TestHelpers, type: :controller
+#   config.include ControllerMacros, type: :controller
+
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ControllerMacros, type: :controller
+
 end
