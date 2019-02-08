@@ -27,7 +27,7 @@ Things you may want to cover:
 ## usersテーブル
 | Column | Type | Options |
 |:-----------|------------:|:------------:|
-|name|string|null:false, unique: true|
+|name|string|null:false|
 |email|string|null:false, unique: true|
 |password|integer|null:false|
 |password_confirmation|integer|null:false|
