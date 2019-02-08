@@ -27,8 +27,9 @@ $(function(){
     .done(function(data){
       var html = buildHTML(data);
       $('.chat-main__message-list').append(html);
-      $('.chat-footer__body--message').val('');
+      $("form")[0].reset();
       $('.chat-main__body').animate({scrollTop: $('.chat-main__message-list').height()}, 500);
+
     })
     .fail(function(data){
       alert('メッセージもしくは画像を送信してください');
