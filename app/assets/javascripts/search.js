@@ -1,6 +1,5 @@
 $(function(){
 
-// ユーザー名が一致
   function appendUserName(user) {
     var html = `<div class="chat-group-user add__user clearfix">
                   <p class="chat-group-user__name">${user.name}</p>
@@ -40,9 +39,6 @@ $(function(){
         alert('名前検索に失敗しました');
       })
     }
-    if (input.length === 0) {
-      $(".add__user").remove();
-    }
     $(".add__user").remove();
   });
 
@@ -56,6 +52,7 @@ $(function(){
   }
 
   $("#user-search-result").on("click", ".chat-group-user__btn--add", function () {
+
     var user_name = $(this).data("user-name");
     var user_id = $(this).data("user-id");
     appendUserNameAdd(user_name, user_id);

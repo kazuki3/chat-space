@@ -27,7 +27,7 @@ Things you may want to cover:
 ## usersテーブル
 | Column | Type | Options |
 |:-----------|------------:|:------------:|
-|name|string|null:false|
+|name|string|null:false, index: true|
 |email|string|null:false, unique: true|
 |password|integer|null:false|
 |password_confirmation|integer|null:false|
@@ -67,14 +67,3 @@ Things you may want to cover:
 ### Association
 - belongs_to :group
 - belongs_to :user
-
-
-
-ログインしているかつ、保存に成功した場合
-メッセージの保存はできたのか → クリア
-意図した画面に遷移しているか
-ログインしているが、保存に失敗した場合
-メッセージの保存は行われなかったか
-意図したビューが描画されているか
-ログインしていない場合
-意図した画面にリダイレクトできているか → クリア
