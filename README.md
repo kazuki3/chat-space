@@ -27,7 +27,7 @@ Things you may want to cover:
 ## usersテーブル
 | Column | Type | Options |
 |:-----------|------------:|:------------:|
-|name|string|null:false, unique: true|
+|name|string|null:false, index: true|
 |email|string|null:false, unique: true|
 |password|integer|null:false|
 |password_confirmation|integer|null:false|
@@ -35,6 +35,7 @@ Things you may want to cover:
 ### Association
 - has_many :groups, through: :members
 - has_many :messages
+- has_many :group_users
 
 ## groupsテーブル
 | Column | Type | Options |
@@ -44,6 +45,7 @@ Things you may want to cover:
 ### Association
 - has_many :users, through: :members
 - has_many :messages
+- has_many :group_users
 
 ## messagesテーブル
 | Column | Type | Options |
@@ -58,7 +60,7 @@ Things you may want to cover:
 - belongs_to :user
 
 
-## group_userテーブル
+## group_usersテーブル
 | Column | Type | Options |
 |:-----------|------------:|:------------:|
 |user|references|null: false, foreign_key: true, index: true|
@@ -67,14 +69,3 @@ Things you may want to cover:
 ### Association
 - belongs_to :group
 - belongs_to :user
-
-
-
-ログインしているかつ、保存に成功した場合
-メッセージの保存はできたのか → クリア
-意図した画面に遷移しているか
-ログインしているが、保存に失敗した場合
-メッセージの保存は行われなかったか
-意図したビューが描画されているか
-ログインしていない場合
-意図した画面にリダイレクトできているか → クリア
