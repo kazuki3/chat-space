@@ -38,13 +38,10 @@ $(document).on('turbolinks:load', function(){
 
 setInterval(update, 1000);
   function update(){
-    console.count("setInterval");
     if($('.chat-main__message')[0]){
       var message_id = $('.chat-main__message').last().data('id');
-      console.log($('.chat-main__message').last().data('id'));
     } else {
       var message_id = 0
-      console.log("else処理");
     }
     $.ajax({
       url: location.href,
@@ -53,7 +50,6 @@ setInterval(update, 1000);
       dataType: 'json'
     })
     .done(function(data) {
-      console.log(data);
       data.forEach(function(message) {
         var html = buildHTML(data);
         $('.chat-main__message-list').append(html);
