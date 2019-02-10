@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   function buildHTML(message){
 
     var image = message.is_image_present ? `<img src='${message.image}'> ` : ''
@@ -14,6 +14,7 @@ $(function(){
   }
   $('#new__message').on('submit', function(e){
     e.preventDefault();
+    e.stopPropagation();
     var formData = new FormData(this);
     var url = $(this).attr('action');
     $.ajax({
@@ -29,10 +30,39 @@ $(function(){
       $('.chat-main__message-list').append(html);
       $("form")[0].reset();
       $('.chat-main__body').animate({scrollTop: $('.chat-main__message-list').height()}, 500);
-
     })
-    .fail(function(data){
-      alert('メッセージもしくは画像を送信してください');
+    .fail(function(){
+      alert('自動更新に失敗しました');
     })
   })
+
+var interval = setInterval(update, 5000);
+
+  function update(){
+      if($('.chat-main__message')[0]){
+        var message_id = $('.chat-main__message').last().data('id');
+      } else {
+        var message_id = 0
+      }
+      $.ajax({
+        url: location.href,
+        type: 'GET',
+        data: {id: message_id},
+        dataType: 'json'
+      })
+      .done(function(data) {
+        console.count(setInterval);
+        console.log(data);
+        data.forEach(function(message) {
+          var html = buildHTML(message);
+          $('.chat-main__message-list').append(html);
+          $('.chat-main__body').animate({scrollTop: $('.chat-main__message-list').height()}, 500);
+          $("form")[0].reset();
+        })
+      })
+      .fail(function() {
+        alert('自動更新に失敗しました');
+      });
+  }
+
 });
